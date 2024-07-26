@@ -1,0 +1,53 @@
+﻿<Window x:Class="KnygyPoshtou.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KnygyPoshtou"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1200"
+        d:Height="600"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label Content="Filter: " />
+                <TextBox Name="filterTextBox" Width="200" TextChanged="filterTextBox_TextChanged" />
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" 
+                  Name="dataGrid1"
+                  Margin="10"
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  />
+
+            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Name="saveButton" Content="Save" Width="80" Margin="10 0" Click="saveButton_Click" />
+                <Button Name="loadButton" Content="Load" Width="80" Margin="10 0" Click="loadButton_Click" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Margin="10">
+                <Button Width="100" Content="Redraw charts" HorizontalAlignment="Right" Click="Button_Click" />
+                <Label Content="Reader's age" HorizontalAlignment="Center" />
+                <lvc:PieChart Height="250" Name="readerAgeChart" />
+                <Label Content="Book popularity" HorizontalAlignment="Center" />
+                <lvc:CartesianChart Height="200" Name="popularBookChart" />
+                <Label Content="Author popularity" HorizontalAlignment="Center" />
+                <lvc:CartesianChart Height="200" Name="popularAuthorChart" />
+                <Label Content="Total earned" HorizontalAlignment="Center" />
+                <lvc:CartesianChart Height="200" Name="earnedChart" />
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Window>
